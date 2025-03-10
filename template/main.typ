@@ -2,19 +2,27 @@
 #import "@preview/tblr:0.3.1": *
 
 #show: uo-ucsp-thesis.with(
+  faculty: "Facultad de Ingeniería y Computación",
+  department: "Escuela Profesional de Ingeniería Civil",
+  degree: "Ingeniería Civil",
+  kind: "Tesis",
+  title: lorem(15),
+  authors: ("Paolo Cesar Guillen Lupo"),
   font: "Times New Roman",
   bib: bibliography("references.bib", title: [REFERENCIAS BIBLIOGRÁFICAS], style: "american-psychological-association"),
 )
 
 = MARCO TEÓRICO
 == Título secundario
+#lorem(50)
 #figure(
   image("../src/img/logo.png", width: 50%),
-  caption: c([#lorem(20)], "Fuente: Elaboración Propia")
+  caption: c("Que paso esto es un caption que puede llegar a aser lo mas largo posible que podriamos comparar asdasd", "Fuente: Elaboración Propia")
 )
 
 == Ecuaciones
 === Titulo terciario
+==== Tìtulo cuaternario
 
 
 Este es un parrafo $f'_c rho beta dot frac(a,b) sqrt(alpha^2)$ #lorem(20)
@@ -24,7 +32,11 @@ $ sum_(k=1)^n k = (n(n+1)) / 2 $<eq1>
 
 Referencia al Ecuación @eq1 #lorem(50)
 
+#lorem(50)
+
 == Tabla
+
+#lorem(59)
 
 #apa_tbl(
   columns: 5,
@@ -45,6 +57,7 @@ Referencia al Ecuación @eq1 #lorem(50)
   [ ], [Clase V - Industrial], [17.6 (180)], [8.3 (85)], [0.90 (9.2)],
   [Concreto],[Industrial portante], [17.5 (178)], [7.0 (71)], [0.44 (4.5)],
   [Sílice-cal], [Industrial portante], [12.6 (129)], [10.1 (103)], [0.93 (9.5)],
-  caption: [Resistencias características a compresión axial y corte de la albañilería],
+  caption: [Resistencias características a compresión axial y corte de la albañilería #lorem(20)],
   remarks: [_Nota:_ Unidades: $"MPa" ("kg" slash "cm"^2)$. Adaptado de: #fig_cite(<Quiun2010>) ],
 )<tb:res_alb_070>
+= Hola

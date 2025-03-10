@@ -10,7 +10,8 @@
   outline(
     title: block(
       width: 100%,
-    [#title \ #align(right,text(size: 12pt, weight: "regular", [Página]))]),
+      [#title \ #align(right,text(size: 12pt, weight: "regular", [Página]))]
+    ),
     depth: 4,
     indent: 0.7em,
     target: target,
@@ -19,13 +20,18 @@
 }
 
 #let txt_cover(kind, grade, department, degree) = {
-  let mid_txt = [ presentado a la #department como parte de los requisitos para optar el]
-  let degree_txt = if grade == "Bachiller" {
-    [grado académico de Bachiller en #carrera]
+  let init_txt = if kind == "Tesis" {
+    [#kind presentada]
   } else {
-    [Título Profesional de #degree]
+    [#kind presentado]
   }
-  return par(first-line-indent: 5cm, justify: true)[#kind #mid_txt #degree_txt]
+  let mid_txt = [ a la #department como parte de los requisitos para optar el]
+  let degree_txt = if grade == "Título Profesional" {
+    [Título Profesional de #degree]
+  } else {
+    [grado académico de #grade en #degree]
+  }
+  return par(first-line-indent: 5cm, justify: true)[#init_txt #mid_txt #degree_txt]
 }
 
 #let in-outline = state("in-outline", false)
@@ -44,19 +50,19 @@
     caption: caption,
     remarks: {
       set text(size: 10pt)
-      set par(leading: 0.5em)
-      [#remarks]
+      set par(leading: 0.4876em)
+      remarks
     },
     header-rows: header-rows,
     columns: columns,
     // booktabs style rules
-    rows(within: "header", auto, inset: (y: 0.5em)),
+    rows(within: "header", auto, inset: (y: 0.4876em)),
     rows(within: "header", auto, align: center),
     hline(within: "header", y: 0, stroke: 0.08em),
     hline(within: "header", y: end, position: bottom, stroke: 0.05em),
-    rows(within: "body", 0, inset: (top: 0.5em)),
+    rows(within: "body", 0, inset: (top: 0.4876em)),
     hline(y: end, position: bottom, stroke: 0.08em),
-    rows(end, inset: (bottom: 0.5em)),
+    rows(end, inset: (bottom: 0.4876em)),
     ..args,
   )
 }
@@ -67,10 +73,11 @@
   authors: ("Autor 1", "Autor 2"),
   kind: "Tesis",
   thesis-advisor: "Nombre del asesor",
+  grade: "Título Profesional",
   degree: "Nombre de la carrera",
   faculty: "Nombre de la facultad",
   department: "Nombre del departamento",
-  bib: "references.bib",
+  bib: [],
   body
 ) = {
   set page(
@@ -79,31 +86,55 @@
   )
 
   set text(size: 12pt, lang: "es", font: font)
+  let leading = 1.06em 
+  set par(leading: leading, spacing: leading *1.5)
+  let spacing-heading = leading * 1.5
 
+  // [#context leading.to-absolute()]
+  // [#context spacing-heading.to-absolute()]
   // CARÁTULA
-  align(center,
-    image("img/logo.png", width: 6cm)
-  )
+  {
+    set align(center)
+    image("img/logo.png", width: 5.53cm)
+    text[#upper(faculty) \ #upper(department) #parbreak()]
 
-  v(1em)
-  align(center, text[#upper(faculty) \ #upper(department)])
-  v(4em)
-  align(center, text(size: 20pt, weight: "bold")[#upper(title)])
-  v(4em)
+    set text(size: 10pt)
+    [ \ \ #parbreak()]
+    
+    set text(size: 20pt, weight: "bold")
+    [#upper(title) #parbreak()]
+    set text(size: 10pt)
+    [ \ #parbreak()  \ #parbreak() ]
+  }
 
-  if authors.len() > 1 and type(authors) == array {
-    text(size:14pt, weight: "bold")[#stack(dir: ltr, spacing: 3pt, [Autores:], for i in authors {stack(dir: ttb, i )})]
-  } else {
-    text(size: 14pt, weight: "bold")[Autor: #authors]
+  {
+    set text(size: 14pt, weight: "bold")
+    if authors.len() > 1 and type(authors) == array {
+      let txt = "Autores: "
+      [#grid(
+        columns: 2,
+        row-gutter: leading,
+        [#txt],
+        upper(authors.join([\ ]))
+      )]
+    } else {
+      [Autor: #upper(authors) #parbreak()]
+    }
+    [Asesor: #thesis-advisor #parbreak()]
+    set text(size: 10pt)
+    [\ \ ]
   }
   
-  v(1em)
-  text(size: 14pt, weight: "bold")[Asesor: #thesis-advisor]
-  v(4.5em)
-  txt_cover(kind, degree, department, degree)
-  v(4.5em)
-  align(center)[*AREQUIPA-PERÚ*]
-  align(center)[*#datetime.today().display("[year]")*]
+  txt_cover(kind, grade, department, degree)
+
+  {
+    set text(size: 10pt)
+    [ \ #parbreak() \ ]
+    set align(center)
+    set text(size: 12pt )
+    [*AREQUIPA-PERÚ \ #datetime.today().display("[year]")*]
+    v(1em)
+  }
 
   pagebreak()
 
@@ -112,10 +143,8 @@
 
 
 // PAR CONFIG
-  let leading = 12.6pt
-  let spacing-heading = leading * 1.5
 
-  set par(spacing: leading * 1.5, leading: leading, first-line-indent: (all:true, amount: 1.25cm))
+  set par(first-line-indent: (all:true, amount: 1.25cm))
 
   set par(justify: true)
   set text(hyphenate: false)
@@ -130,14 +159,16 @@
   })
 
   // HEADING CONFIG
+  show heading: set block(above: spacing-heading, below: spacing-heading)
+
   show heading: it => if it.level > 1 {
-    pad(left: 1em * (it.level - 2), text(size: 12pt)[#it])
+    set text(size: 12pt)
+    pad(left: 0.5cm * (it.level - 2), [#it])
   } else {
     set text(size: 14pt)
     it
   }
 
-  show heading: set block(above: spacing-heading, below: spacing-heading)
 
   // Heading lvl > 4 in italics
   show heading: it => if it.level > 3 {
@@ -154,6 +185,9 @@
     in-outline.update(false)
   }
 
+  show outline: set par(justify: true)
+  show outline: set text(hyphenate: false)
+
   create_outline()
   create_outline(title: "LISTA DE FIGURAS", target: figure.where(kind: image))
   create_outline(title: "LISTA DE TABLAS", target: figure.where(kind: table))
@@ -163,7 +197,7 @@
     pagebreak(weak: true)
     set align(center)
     set text(size: 14pt)
-    upper([#counter(heading).display().trim(":") #v(spacing-heading, weak: true) #it.body])
+    upper([#counter(heading).display().trim(":") #parbreak() #it.body])
   }
 
   // FOOTER STYLE
@@ -174,36 +208,27 @@
   ])
 
   // FIGURE STYLE
-  show figure: set block(above: 1.5em, below: 1em)
-
   show figure.caption.where(kind: image): it => [
-    #v(0.5em)
+    #v(leading)
+    #set par(leading: leading * 0.46)
     #emph([#it.supplement #context it.counter.display(it.numbering).])
     #it.body
-    #v(0.5em)
   ]
 
   show figure.where(kind: table): set figure.caption(position: top)
 
   show figure.caption.where(kind: table): it => [
-    #v(0.5em)
+    #set par(leading: leading * 0.46)
     #it.supplement  #context it.counter.display(it.numbering).
     #emph(it.body)
-    #v(0.5em)
+    #v(leading*0.8)
   ]
 
     // CONFIGURACION DE ECUACIONES Y FORMULAS CON PADDING Y NUMERACION
   show math.equation.where(block: true): it => {
     set align(left)
-    pad(left:1.25cm,top:0.8em, bottom: 0.8em, it)
+    pad(left:1.25cm, it)
   }
-
-  show table : it => {
-    set par(leading: 3em)
-
-    it
-  }
-
 
   set math.equation(numbering: "(1)")
 
