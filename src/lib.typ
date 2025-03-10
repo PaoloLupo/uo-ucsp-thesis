@@ -77,6 +77,10 @@
   degree: "Nombre de la carrera",
   faculty: "Nombre de la facultad",
   department: "Nombre del departamento",
+  dedication: [El texto de dedicatoria #lorem(50)],
+  acknowledgements: [El texto de agradecimiento #lorem(50)],
+  abstract_es: [#lorem(50) #parbreak() #lorem(50)],
+  abstract_en: [],
   bib: [],
   body
 ) = {
@@ -90,8 +94,6 @@
   set par(leading: leading, spacing: leading *1.5)
   let spacing-heading = leading * 1.5
 
-  // [#context leading.to-absolute()]
-  // [#context spacing-heading.to-absolute()]
   // CARÁTULA
   {
     set align(center)
@@ -141,13 +143,42 @@
   counter(page).update(1) // Inicio de conteo de paginas
   set page(numbering: "i", ) // Paginas antes del Cap 1 contados en romanos
 
+  set par(justify: true)
+  set text(hyphenate: false)
+  show heading: set block(above: spacing-heading, below: spacing-heading)
+
+  if kind == "Tesis" {
+    show heading: set align(right + bottom)
+    show heading: set text(size: 14pt)
+    [
+      = DEDICATORIA
+      #pad(left: 6.25cm, emph(dedication))
+      #pagebreak()
+    ]
+
+    show heading: set align(center + top)
+    set par(first-line-indent: (all:true, amount: 1.25cm))
+
+    [
+      = AGRADECIMIENTOS
+      #acknowledgements
+      #pagebreak()
+
+      = RESUMEN
+      #abstract_es
+      #pagebreak()
+      
+      = ABSTRACT
+      #abstract_en
+      #pagebreak()
+    ]
+  }
+
 
 // PAR CONFIG
 
   set par(first-line-indent: (all:true, amount: 1.25cm))
 
-  set par(justify: true)
-  set text(hyphenate: false)
 
   set heading(numbering: (..nums) => {
     let numbers = nums.pos()
@@ -159,7 +190,6 @@
   })
 
   // HEADING CONFIG
-  show heading: set block(above: spacing-heading, below: spacing-heading)
 
   show heading: it => if it.level > 1 {
     set text(size: 12pt)
