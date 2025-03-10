@@ -7,6 +7,31 @@
     heading(bookmarked: true, [#title])
   }
 
+  set outline.entry(fill: repeat([.], gap: 0.15em))
+
+  show outline.entry: it => context {
+    if it.element.has("kind") {
+      let loc = it.element.location()
+
+      if counter(figure.where(kind: it.element.kind)).at(loc).first() == 1 {
+        v(1em)
+      }
+
+      block(
+        link(loc,
+          it.prefix()
+          + [. ]
+          + it.body() 
+          + box(it.fill, width: 1fr)
+          + h(0.2em)
+          + it.page()
+        )
+      )
+    } else {
+      it
+    }
+  }
+
   outline(
     title: block(
       width: 100%,
@@ -63,6 +88,7 @@
     rows(within: "body", 0, inset: (top: 0.4876em)),
     hline(y: end, position: bottom, stroke: 0.08em),
     rows(end, inset: (bottom: 0.4876em)),
+    cols(within: "body", span(0, end), align: horizon),
     ..args,
   )
 }
@@ -218,6 +244,8 @@
   show outline: set par(justify: true)
   show outline: set text(hyphenate: false)
 
+  set figure.caption(separator: [.])
+
   create_outline()
   create_outline(title: "LISTA DE FIGURAS", target: figure.where(kind: image))
   create_outline(title: "LISTA DE TABLAS", target: figure.where(kind: table))
@@ -237,22 +265,27 @@
     #counter(page).display()
   ])
 
+
   // FIGURE STYLE
   show figure.caption.where(kind: image): it => [
     #v(leading)
     #set par(leading: leading * 0.46)
-    #emph([#it.supplement #context it.counter.display(it.numbering).])
+    #emph([#it.supplement #context it.counter.display(it.numbering)#it.separator])
     #it.body
   ]
+
 
   show figure.where(kind: table): set figure.caption(position: top)
 
   show figure.caption.where(kind: table): it => [
     #set par(leading: leading * 0.46)
+    #set text(size: 12pt)
     #it.supplement  #context it.counter.display(it.numbering).
     #emph(it.body)
     #v(leading*0.8)
   ]
+
+  show table.cell: set par(justify: false)
 
     // CONFIGURACION DE ECUACIONES Y FORMULAS CON PADDING Y NUMERACION
   show math.equation.where(block: true): it => {
