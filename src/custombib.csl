@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="in-text">
+  <info>
+    <title>Custom bib style</title>
+    <id>http://www.zotero.org/styles/custom-style</id>
+    <link href="http://www.zotero.org/styles/custom-style" rel="self"/>
+  </info>
+  <macro name="author">
+    <names variable="author">
+      <name form="long" and="text" delimiter=", "/>
+    </names>
+  </macro>
+  <macro name="title">
+    <text variable="title" font-style="italic"/>
+  </macro>
+  <macro name="edition">
+    <group delimiter=", ">
+      <text variable="edition" suffix=" ed."/>
+    </group>
+  </macro>
+  <macro name="year">
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  <citation>
+    <layout delimiter=". ">
+      <text macro="title"/>
+      <text macro="edition"/>
+      <text macro="author" prefix=" por "/>
+      <text macro="year" prefix=", "/>
+    </layout>
+  </citation>
+  <bibliography>
+    <layout delimiter=". ">
+      <text macro="title"/>
+      <text macro="edition"/>
+      <text macro="author" prefix="por "/>
+      <text macro="year" prefix=", "/>
+    </layout>
+  </bibliography>
+</style>

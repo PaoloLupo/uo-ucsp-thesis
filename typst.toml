@@ -1,0 +1,21 @@
+[package]
+name = "uo-ucsp-thesis"
+version = "0.1.0"
+entrypoint = "lib.typ"
+authors = ["Paolo Lupo"]
+license = "MIT-0"
+description = "Unnoficial template for writing a thesis in the UCSP faculty of Civil Enginnering"
+categories = ["thesis"]
+exclude = [
+    "template/main.pdf",
+    ".gitignore",
+    ".typstignore"
+]
+
+
+[template]
+path = "template/"
+entrypoint = "main.typ"
+thumbnail = "thumbnails/tb.png"
+
+
