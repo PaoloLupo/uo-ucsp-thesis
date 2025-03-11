@@ -1,4 +1,4 @@
-#import "../src/lib.typ": uo-ucsp-thesis, c, apa_tbl, fig_cite
+#import "@preview/uo-ucsp-thesis": uo-ucsp-thesis, c, apa_tbl, fig_cite
 #import "@preview/tblr:0.3.1": *
 
 #let dedicatoria = [
