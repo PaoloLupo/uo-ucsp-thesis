@@ -107,7 +107,6 @@
   acknowledgements: [],
   abstract_es: [],
   abstract_en: [],
-  font: "TeX Gyre Termes",
   bib: [],
   body
 ) = {
@@ -116,7 +115,7 @@
     margin: (left: 3cm, right: 2cm, top: 3cm, bottom: 2cm),
   )
 
-  set text(size: 12pt, lang: "es", font: font)
+  set text(size: 12pt, lang: "es", font: ("Times New Roman", "TeX Gyre Termes"))
   let leading = 1.06em 
   set par(leading: leading, spacing: leading *1.5)
   let spacing-heading = leading * 1.5

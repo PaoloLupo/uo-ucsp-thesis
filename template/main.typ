@@ -1,4 +1,4 @@
-#import "@preview/uo-ucsp-thesis": uo-ucsp-thesis, c, apa_tbl, fig_cite
+#import "@preview/uo-ucsp-thesis:0.1.0": uo-ucsp-thesis, c, apa_tbl, fig_cite
 #import "@preview/tblr:0.3.1": *
 
 #let dedicatoria = [
@@ -38,7 +38,6 @@
   title: "Optimización de Materiales Sostenibles para la Construcción de Puentes de Larga Duración en Zonas de Alta Sismicidad",
   authors: ("Tom Christopher Hanks", "Michael Jeffrey Jordan"),
   thesis-advisor: "Dr. Emma Charlotte Watson",
-  font: "Times New Roman",
   dedication: dedicatoria,
   acknowledgements: agradecimientos,
   abstract_es: resumen_es,
