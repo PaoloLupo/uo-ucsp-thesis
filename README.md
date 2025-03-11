@@ -1,6 +1,8 @@
 # uo-ucsp-thesis
 **Unofficial** thesis template for the Faculty of Civil Engineering at UCSP
 
+![thumbnail](thumbnails/tb.png)
+
 ## Usage
 
 ### Using the Typst Web App  
