@@ -1,11 +1,13 @@
 [package]
 name = "uo-ucsp-thesis"
 version = "0.1.0"
+compiler = "0.13.0"
 entrypoint = "lib.typ"
-authors = ["Paolo Lupo"]
+authors = ["Paolo Lupo <@PaoloLupo>"]
 license = "MIT-0"
 description = "Unnoficial template for writing a thesis in the UCSP faculty of Civil Enginnering"
 categories = ["thesis"]
+keywords = ["thesis", "university", "bachelor"]
 exclude = [
     "template/main.pdf",
     ".gitignore",
