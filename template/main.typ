@@ -1,14 +1,48 @@
 #import "../src/lib.typ": uo-ucsp-thesis, c, apa_tbl, fig_cite
 #import "@preview/tblr:0.3.1": *
 
+#let dedicatoria = [
+  A mis padres, por ser mi fuente inagotable de apoyo, amor y sabiduría. Su guía y confianza en mí han sido la base sobre la que he construido cada paso de este camino.
+
+  *Tom*
+]
+
+#let agradecimientos = [
+  A la Dra. Emma, mi asesora, por su invaluable guía, paciencia y dedicación a lo largo de este proceso. Su conocimiento, consejos y constante motivación fueron fundamentales para el desarrollo de esta tesis. Gracias por creer en mí, por impulsar mis ideas y por enseñarme a enfrentar los desafíos con determinación y rigor académico.
+
+  Su acompañamiento no solo enriqueció mi trabajo, sino que también dejó una huella profunda en mi crecimiento profesional y personal.
+]
+
+#let resumen_es = [
+  El presente estudio aborda la optimización de materiales sostenibles para la construcción de puentes de larga duración en zonas de alta sismicidad. La investigación se centra en la selección y evaluación de materiales innovadores, como concretos reforzados con fibras recicladas y aleaciones metálicas de alta resistencia, con el objetivo de mejorar la capacidad estructural y la resiliencia de las infraestructuras frente a eventos sísmicos de gran magnitud.
+
+  Mediante simulaciones computacionales y ensayos a escala, se analizaron los comportamientos dinámicos de diferentes configuraciones de puente, considerando factores como la amortiguación de vibraciones, la flexibilidad estructural y la durabilidad frente a ciclos de carga. Los resultados revelaron que la combinación de materiales reciclables con tecnologías de disipación de energía puede reducir significativamente los desplazamientos estructurales y aumentar la vida útil de las construcciones.
+
+  Este estudio contribuye al campo de la ingeniería civil al proponer soluciones viables y ambientalmente responsables para la infraestructura vial, promoviendo el desarrollo de puentes más seguros, eficientes y sostenibles en regiones propensas a la actividad sísmica.
+
+  *Palabras clave:* ingeniería civil, puentes, materiales sostenibles, sismos, optimización estructural.
+]
+
+#let resumen_en = [
+  This study addresses the optimization of sustainable materials for the construction of long-lasting bridges in high-seismicity areas. The research focuses on the selection and evaluation of innovative materials, such as fiber-reinforced recycled concrete and high-strength metal alloys, with the aim of improving structural capacity and infrastructure resilience to large-magnitude seismic events.
+
+  Through computational simulations and scaled tests, the dynamic behavior of various bridge configurations was analyzed, considering factors such as vibration damping, structural flexibility, and durability under load cycles. The results showed that combining recyclable materials with energy dissipation technologies can significantly reduce structural displacements and increase the lifespan of constructions.
+
+  This study contributes to the field of civil engineering by proposing viable and environmentally responsible solutions for road infrastructure, promoting the development of safer, more efficient, and sustainable bridges in earthquake-prone regions.
+
+  *Keywords:* civil engineering, bridges, sustainable materials, earthquakes, structural optimization.
+]
+
 #show: uo-ucsp-thesis.with(
-  faculty: "Facultad de Ingeniería y Computación",
-  department: "Escuela Profesional de Ingeniería Civil",
-  degree: "Ingeniería Civil",
   kind: "Tesis",
-  title: lorem(15),
-  authors: ("Paolo Cesar Guillen Lupo"),
+  title: "Optimización de Materiales Sostenibles para la Construcción de Puentes de Larga Duración en Zonas de Alta Sismicidad",
+  authors: ("Tom Christopher Hanks", "Michael Jeffrey Jordan"),
+  thesis-advisor: "Dr. Emma Charlotte Watson",
   font: "Times New Roman",
+  dedication: dedicatoria,
+  acknowledgements: agradecimientos,
+  abstract_es: resumen_es,
+  abstract_en: resumen_en,
   bib: bibliography("references.bib", title: [REFERENCIAS BIBLIOGRÁFICAS], style: "american-psychological-association"),
 )
 

@@ -16,10 +16,31 @@ typst init @preview/uo-ucsp-thesis:0.1.0 mi-tesis
 ```
 
 ## Getting Started
-To use this template,
+Use this function (check all possible arguments and their default values). You may also use the utility functions included with this template:
+
+```typst
+#import "@preview/uo-ucsp-thesis:0.1.0": *
+
+#show: uo-ucsp-thesis.with(
+    kind: "Tesis", // If kind: "Plan de Tesis", sections like dedication, acknowledgements, and abstracts are ignored
+    title: "Título de la Tesis",
+    authors: ("Autor 1", "Autor 2"), // It is possible to include a single author like -> authors: "Autor"
+    thesis-advisor: "Nombre del asesor",
+    grade: "Título Profesional",
+    degree: "Ingeniería Civil",
+    faculty: "Facultad de Ingeniería y Computación",
+    department: "Escuela Profesional de Ingeniería Civil",
+    dedication: [],
+    acknowledgements: [],
+    abstract_es: [], // Spanish version of the abstract
+    abstract_en: [], // English version of the abstract
+    font: "Times New Roman", // Use "TeX Gyre Termes" if you use the Typst web app
+    bib: bibliography("references.bib", title: [REFERENCIAS BIBLIOGRÁFICAS], style: "american-psychological-association") // Replace with your .bib file
+)
+```
 
 ## Utilities
-Helpers functions like:
+The template includes helper functions to streamline your workflow:
 ```typst
 // Use for custom figure caption that includes bibliographic source
 #c(caption, source)

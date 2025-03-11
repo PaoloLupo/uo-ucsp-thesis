@@ -52,7 +52,8 @@
   }
   let mid_txt = [ a la #department como parte de los requisitos para optar el]
   let degree_txt = if grade == "Título Profesional" {
-    [Título Profesional de #degree]
+    let degree_txt = if degree.contains("Ingeniería") [Ingeniero #degree.split().at(1)] else [#degree]
+    [Título Profesional de #degree_txt]
   } else {
     [grado académico de #grade en #degree]
   }
@@ -94,19 +95,19 @@
 }
 
 #let uo-ucsp-thesis(
-  font: "TeX Gyre Termes",
   title: "Título de la Tesis",
   authors: ("Autor 1", "Autor 2"),
   kind: "Tesis",
-  thesis-advisor: "Nombre del asesor",
+  thesis-advisor: "Nombre del Asesor",
   grade: "Título Profesional",
-  degree: "Nombre de la carrera",
-  faculty: "Nombre de la facultad",
-  department: "Nombre del departamento",
-  dedication: [El texto de dedicatoria #lorem(50)],
-  acknowledgements: [El texto de agradecimiento #lorem(50)],
-  abstract_es: [#lorem(50) #parbreak() #lorem(50)],
+  degree: "Ingeniería Civil",
+  faculty: "Facultad de Ingeniería y Computación",
+  department: "Escuela Profesional de Ingeniería Civil",
+  dedication: [],
+  acknowledgements: [],
+  abstract_es: [],
   abstract_en: [],
+  font: "TeX Gyre Termes",
   bib: [],
   body
 ) = {
