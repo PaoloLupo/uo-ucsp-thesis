@@ -2,7 +2,7 @@
 name = "uo-ucsp-thesis"
 version = "0.1.0"
 compiler = "0.13.0"
-entrypoint = "lib.typ"
+entrypoint = "src/lib.typ"
 authors = ["Paolo Lupo <@PaoloLupo>"]
 repository = "https://github.com/PaoloLupo/uo-ucsp-thesis"
 license = "MIT-0"
