@@ -46,31 +46,23 @@
   bib: bibliography("references.bib", title: [REFERENCIAS BIBLIOGRÁFICAS], style: "american-psychological-association"),
 )
 
-= MARCO TEÓRICO
-== Título secundario
-#lorem(50)
+= INTRODUCCIÓN 
+== Motivación
+Los siguientes son ejemplos de los usos de las funciones custom presentes y el formato para los distintos elementos en el template.
+
+=== Parrafos
+#lorem(30)
+
+#lorem(30)
+
+=== Figura
+
 #figure(
-  image("../src/img/logo.png", width: 50%),
-  caption: c("Que paso esto es un caption que puede llegar a aser lo mas largo posible que podriamos comparar asdasd", "Fuente: Elaboración Propia")
-)
+  rect(fill:red, width: 50%, height: 20%),
+  caption: c("Rectangulo rojo", "Fuente: Elaboración Propia")
+)<red_rect>
 
-== Ecuaciones
-=== Titulo terciario
-==== Tìtulo cuaternario
-
-
-Este es un parrafo $f'_c rho beta dot frac(a,b) sqrt(alpha^2)$ #lorem(20)
-
-$ sum_(k=1)^n k = (n(n+1)) / 2 $<eq1> 
-
-
-Referencia al Ecuación @eq1 #lorem(50)
-
-#lorem(50)
-
-== Tabla
-
-#lorem(59)
+=== Tabla
 
 #apa_tbl(
   columns: 5,
@@ -91,7 +83,25 @@ Referencia al Ecuación @eq1 #lorem(50)
   [ ], [Clase V - Industrial], [17.6 (180)], [8.3 (85)], [0.90 (9.2)],
   [Concreto],[Industrial portante], [17.5 (178)], [7.0 (71)], [0.44 (4.5)],
   [Sílice-cal], [Industrial portante], [12.6 (129)], [10.1 (103)], [0.93 (9.5)],
-  caption: [Resistencias características a compresión axial y corte de la albañilería #lorem(20)],
+  caption: [Resistencias características a compresión axial y corte de la albañilería ],
   remarks: [_Nota:_ Unidades: $"MPa" ("kg" slash "cm"^2)$. Adaptado de: #fig_cite(<Quiun2010>) ],
-)<tb:res_alb_070>
-= Hola
+)
+
+=== Ecuación
+$ sum_(k=1)^n k = (n(n+1)) / 2 $
+
+== Problemática
+== Justificación
+== Objetivos
+=== Objetivo general
+=== Objetivos específicos 
+== Hipótesis
+== Variables de la investigación
+== Metodología de la investigación
+== Estructura de la tesis
+= MARCO TEÓRICO
+= ESTADO DEL ARTE
+= DESARROLLO DE LA TESIS
+= RESULTADOS Y DISCUSIÓN DE RESULTADOS
+= CONCLUSIONES
+= RECOMENDACIONES
