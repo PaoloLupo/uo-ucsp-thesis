@@ -1,22 +1,13 @@
 [package]
 name = "uo-ucsp-thesis"
-version = "0.1.0"
-compiler = "0.13.0"
+version = "0.2.0"
 entrypoint = "src/lib.typ"
-authors = ["Paolo Lupo <@PaoloLupo>"]
-repository = "https://github.com/PaoloLupo/uo-ucsp-thesis"
-license = "MIT-0"
-description = "Unnoficial thesis template for the faculty of Civil Enginnering at UCSP"
-categories = ["thesis"]
-keywords = ["thesis", "university", "bachelor"]
-exclude = [
-    "template/main.pdf",
-    ".gitignore",
-]
+description = "Template no oficial para tesis de grado en la Universidad Católica San Pablo"
+categories = [ "thesis" ]
+disciplines = [ "engineering" ]
+compiler = "0.13.0"
 
 [template]
-path = "template/"
+path = "template"
 entrypoint = "main.typ"
-thumbnail = "thumbnails/tb.png"
-
-
+thumbnail = ""

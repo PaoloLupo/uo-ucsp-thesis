@@ -1,66 +1,5 @@
-#import "@preview/tblr:0.3.1": *
-
-#let create_outline(title: "ÍNDICE", target: heading)= {
-  {
-    show heading: none
-    set heading(numbering: none)
-    heading(bookmarked: true, [#title])
-  }
-
-  set outline.entry(fill: repeat([.], gap: 0.15em))
-
-  show outline.entry: it => context {
-    if it.element.has("kind") {
-      let loc = it.element.location()
-
-      if counter(figure.where(kind: it.element.kind)).at(loc).first() == 1 {
-        v(1em)
-      }
-
-      block(
-        link(loc,
-          it.prefix()
-          + [. ]
-          + it.body() 
-          + box(it.fill, width: 1fr)
-          + h(0.2em)
-          + it.page()
-        )
-      )
-    } else {
-      it
-    }
-  }
-
-  outline(
-    title: block(
-      width: 100%,
-      [#title \ #align(right,text(size: 12pt, weight: "regular", [Página]))]
-    ),
-    depth: 4,
-    indent: 0.7em,
-    target: target,
-  )
-  pagebreak()
-}
-
-#let txt_cover(kind, grade, department, degree) = {
-  let init_txt = if kind == "Tesis" {
-    [#kind presentada]
-  } else {
-    [#kind presentado]
-  }
-  let mid_txt = [ a la #department como parte de los requisitos para optar el]
-  let degree_txt = if grade == "Título Profesional" {
-    let degree_txt = if degree.contains("Ingeniería") [Ingeniero #degree.split().at(1)] else [#degree]
-    [Título Profesional de #degree_txt]
-  } else {
-    [grado académico de #grade en #degree]
-  }
-  return par(first-line-indent: 5cm, justify: true)[#init_txt #mid_txt #degree_txt]
-}
-
-#let in-outline = state("in-outline", false)
+#import "utils.typ": *
+#import "@local/apa-tblr:0.1.0": * 
 
 #let c(caption, source) = context if in-outline.get() {caption} else {caption + [. ] + source}
 
@@ -68,45 +7,20 @@
   #cite(key, style:"custombib.csl")
 ]
 
-#let apa_tbl(columns: auto, header-rows: auto, caption: none, remarks: none, ..args) = {
-  tblr(
-    stroke: none,
-    column-gutter: 1em,
-    placement: none,
-    caption: caption,
-    remarks: {
-      set text(size: 10pt)
-      set par(leading: 0.4876em)
-      remarks
-    },
-    header-rows: header-rows,
-    columns: columns,
-    // booktabs style rules
-    rows(within: "header", auto, inset: (y: 0.4876em)),
-    rows(within: "header", auto, align: center),
-    hline(within: "header", y: 0, stroke: 0.08em),
-    hline(within: "header", y: end, position: bottom, stroke: 0.05em),
-    rows(within: "body", 0, inset: (top: 0.4876em)),
-    hline(y: end, position: bottom, stroke: 0.08em),
-    rows(end, inset: (bottom: 0.4876em)),
-    cols(within: "body", span(0, end), align: horizon),
-    ..args,
-  )
-}
-
 #let uo-ucsp-thesis(
   title: "Título de la Tesis",
   authors: ("Autor 1", "Autor 2"),
   kind: "Tesis",
-  thesis-advisor: "Nombre del Asesor",
+  thesis-advisor: "Nombre del asesor",
   grade: "Título Profesional",
-  degree: "Ingeniería Civil",
-  faculty: "Facultad de Ingeniería y Computación",
-  department: "Escuela Profesional de Ingeniería Civil",
-  dedication: [],
-  acknowledgements: [],
-  abstract_es: [],
+  degree: "Nombre de la carrera",
+  faculty: "Nombre de la facultad",
+  department: "Nombre del departamento",
+  dedication: [El texto de dedicatoria #lorem(50)],
+  acknowledgements: [El texto de agradecimiento #lorem(50)],
+  abstract_es: [#lorem(50) #parbreak() #lorem(50)],
   abstract_en: [],
+  cronograma: [],
   bib: [],
   body
 ) = {
@@ -165,6 +79,7 @@
   }
 
   pagebreak()
+  
 
   counter(page).update(1) // Inicio de conteo de paginas
   set page(numbering: "i", ) // Paginas antes del Cap 1 contados en romanos
@@ -288,6 +203,7 @@
   show table.cell: set par(justify: false)
 
     // CONFIGURACION DE ECUACIONES Y FORMULAS CON PADDING Y NUMERACION
+  show math.equation: set text(font: "TeX Gyre Termes Math")
   show math.equation.where(block: true): it => {
     set align(left)
     pad(left:1.25cm, it)
@@ -325,6 +241,7 @@
       set text(size: 14pt, weight: "bold")
       [#upper(it.body)]
   }
+  cronograma
   
   bib
 }

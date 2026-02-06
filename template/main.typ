@@ -1,5 +1,4 @@
-#import "@preview/uo-ucsp-thesis:0.1.0": uo-ucsp-thesis, c, apa_tbl, fig_cite
-#import "@preview/tblr:0.3.1": *
+#import "@local/uo-ucsp-thesis:0.2.0": *
 
 #let dedicatoria = [
   A mis padres, por ser mi fuente inagotable de apoyo, amor y sabiduría. Su guía y confianza en mí han sido la base sobre la que he construido cada paso de este camino.
@@ -86,8 +85,10 @@ Los siguientes son ejemplos de los usos de las funciones custom presentes y el f
   remarks: [_Nota:_ Unidades: $"MPa" ("kg" slash "cm"^2)$. Adaptado de: #fig_cite(<Quiun2010>) ],
 )
 
+#lorem(100)
+
 === Ecuación
-$ sum_(k=1)^n k = (n(n+1)) / 2 $
+$ sum_(k=1)^n k = (n(n+1)) / 2 \ "Donde" $
 
 == Problemática
 == Justificación
