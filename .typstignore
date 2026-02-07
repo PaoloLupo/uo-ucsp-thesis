@@ -1,1 +1,5 @@
 scripts
+justfile
+.gitignore
+thumbnails
+main.pdf
