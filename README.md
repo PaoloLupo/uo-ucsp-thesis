@@ -21,12 +21,12 @@ typst init @preview/uo-ucsp-thesis:0.1.0 mi-tesis
 Use this function (check all possible arguments and their default values). You may also use the utility functions included with this template:
 
 ```typst
-#import "@preview/uo-ucsp-thesis:0.1.0": *
+#import "@preview/uo-ucsp-thesis:0.2.0": *
 
 #show: uo-ucsp-thesis.with(
-    kind: "Tesis", // If kind: "Plan de Tesis", sections like dedication, acknowledgements, and abstracts are ignored
+    kind: "Tesis", // If kind != "Tesis", sections like dedication, acknowledgements, and abstracts are ignored
     title: "Título de la Tesis",
-    authors: ("Autor 1", "Autor 2"), // It is possible to include a single author like -> authors: "Autor"
+    authors: ("Autor 1", "Autor 2"), 
     thesis-advisor: "Nombre del asesor",
     grade: "Título Profesional",
     degree: "Ingeniería Civil",
@@ -34,10 +34,19 @@ Use this function (check all possible arguments and their default values). You m
     department: "Escuela Profesional de Ingeniería Civil",
     dedication: [],
     acknowledgements: [],
-    abstract_es: [], // Spanish version of the abstract
-    abstract_en: [], // English version of the abstract
-    font: "Times New Roman", // Use "TeX Gyre Termes" if you use the Typst web app
-    bib: bibliography("references.bib", title: [REFERENCIAS BIBLIOGRÁFICAS], style: "american-psychological-association") // Replace with your .bib file
+    abstract_es: [], 
+    abstract_en: [], 
+    keywords_es: ("ingeniería", "tesis", "ucsp"), // Palabras clave en español
+    keywords_en: ("engineering", "thesis", "ucsp"), // Keywords in English
+    cronograma: [], // Seccion opcional para Plan de Tesis
+    anexos: [
+        = Primer Anexo
+        #lorem(10)
+        = Segundo Anexo
+        #lorem(10)
+    ],
+    font: ("Times New Roman", "TeX Gyre Termes"),
+    bib: bibliography("references.bib", title: [REFERENCIAS BIBLIOGRÁFICAS], style: "american-psychological-association") 
 )
 ```
 

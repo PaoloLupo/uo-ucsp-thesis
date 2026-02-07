@@ -1,10 +1,10 @@
 [package]
 name = "uo-ucsp-thesis"
-version = "0.2.0"
+version = "0.3.0"
 entrypoint = "src/lib.typ"
-description = "Template no oficial para tesis de grado en la Universidad Católica San Pablo"
-categories = [ "thesis" ]
-disciplines = [ "engineering" ]
+description = "Unofficial thesis template for the faculty of Civil Engineering at UCSP"
+categories = ["thesis"]
+disciplines = ["engineering"]
 compiler = "0.13.0"
 
 [template]
