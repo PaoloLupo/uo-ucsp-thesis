@@ -108,6 +108,18 @@ Como se observa en la @red_rect, el formato de subtítulo sigue las normas APA.
 == Metodología de la investigación
 
 = MARCO TEÓRICO
+== Bases Teóricas
+En esta sección se presentan los fundamentos de la investigación iniciada en la @intro. La optimización de puentes requiere un análisis exhaustivo de las fuerzas dinámicas.
+
+Como se define en la mecánica clásica, la relación entre fuerza, masa y aceleración se expresa mediante la conocida fórmula $F = m a$. En términos de energía cinética, podemos decir que $E_k = 1/2 m v^2$.
+
+Para sistemas más complejos, consideramos la ecuación de equilibrio dinámico:
+$ M accent(x, dot.double) + C accent(x, dot) + K x = F(t) $ <eq_equilibrium>
+
+La Ec. @eq_equilibrium es fundamental para entender el comportamiento de estructuras bajo cargas sísmicas.
+
+== Antecedentes
+De acuerdo con lo mencionado en el @lab_tests, los estudios previos sugieren que...
 = ESTADO DEL ARTE
 = DESARROLLO DE LA TESIS
 = RESULTADOS Y DISCUSIÓN
