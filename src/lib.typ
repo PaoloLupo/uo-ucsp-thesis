@@ -295,6 +295,18 @@
   set list(indent: 1.25cm)
   set enum(indent: 1.25cm)
 
+  show list: it => {
+    set list(indent: 0pt)
+    set enum(indent: 0pt)
+    it
+  }
+
+  show enum: it => {
+    set list(indent: 0pt)
+    set enum(indent: 0pt)
+    it
+  }
+
   // Reinicio del contador del FOOTER a partir del CAP1
   counter(page).update(1)
 
